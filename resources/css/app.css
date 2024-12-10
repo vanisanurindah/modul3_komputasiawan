@@ -1,0 +1,52 @@
+/* Styling untuk judul */
+.container h4 {
+    margin-bottom: 20px;
+}
+
+/* Styling untuk tombol "Create Order" */
+.btn-create-order {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+/* Styling untuk tabel */
+.table {
+    width: 100%;
+}
+
+/* Styling untuk baris header tabel */
+.table thead th {
+    background-color: #f8f9fa; /* Warna latar belakang */
+    color: #333; /* Warna teks */
+    font-weight: bold; /* Tebal teks */
+}
+
+/* Styling untuk baris data tabel */
+.table tbody td {
+    vertical-align: middle; /* Posisi vertikal */
+}
+
+/* Styling untuk baris data tabel saat dihover */
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Warna latar belakang saat dihover */
+}
+
+/* Styling untuk tombol aksi */
+.action-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Styling untuk ikon aksi */
+.action-btns i {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #6c757d; /* Warna ikon */
+}
+
+/* Styling untuk ikon aksi saat dihover */
+.action-btns i:hover {
+    color: #FFA500; /* Warna ikon saat dihover */
+}

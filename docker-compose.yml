@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    image: katalog-baju-dan-pemesanan
+    container_name: katalog-baju-dan-pemesanan
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+    working_dir: /var/www/katalog-baju-dan-pemesanan
+    volumes:
+      - .:/var/www/katalog-baju-dan-pemesanan/
+      - ./storage/php.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - katalog-baju-dan-pemesanan
+
+  webserver:
+    image: nginx:alpine
+    container_name: nginxkatalog-baju-dan-pemesanan
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "2022:80"
+    volumes:
+      - .:/var/www/katalog-baju-dan-pemesanan
+      - ./storage/:/etc/nginx/conf.d/
+    networks:
+      - katalog-baju-dan-pemesanan
+
+  db:
+    image: mysql:5.7
+    container_name: dbkatalog-baju-dan-pemesanan
+    restart: always
+    tty: true
+    ports:
+      - "20222:3306"
+    volumes:
+      - lbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lilin1234
+      MYSQL_DATABASE: data_barang_fix_baru
+    networks:
+      - katalog-baju-dan-pemesanan
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pmakatalog-baju-dan-pemesanan
+    links:
+      - db
+    restart: always
+    ports:
+      - "7000:80"
+    networks:
+      - katalog-baju-dan-pemesanan
+
+networks:
+  katalog-baju-dan-pemesanan:
+    driver: bridge
+
+volumes:
+  lbdata:
+    driver: local
